@@ -4,3 +4,55 @@ GET https://example.com/
 ### GET JSON placeholder
 
 GET https://jsonplaceholder.typicode.com/posts
+
+
+
+
+
+### Getting a resource
+
+GET https://jsonplaceholder.typicode.com/posts/1
+
+### Listing all resources
+
+GET https://jsonplaceholder.typicode.com/posts/1
+
+### Creating a resource
+
+POST https://jsonplaceholder.typicode.com/posts 
+Content-Type: application/json
+
+{
+    "id": 20,
+    "title": "New post!",
+    "body": "This is my post!"
+}
+
+
+### PUT - Updating one post (alle Daten mitschicken)
+
+PUT  https://jsonplaceholder.typicode.com/posts/2
+Content-Type: application/json
+
+{
+ "title": "New post!",
+ "body": "...",
+ "userid": 4
+
+}
+
+
+### Patching a resource 
+
+PATCH  https://jsonplaceholder.typicode.com/posts/1
+Content-Type: application/json
+
+{
+ "title": "New post!",
+ 
+}
+
+
+### Deleting a resource
+
+DELETE  https://jsonplaceholder.typicode.com/posts/1
