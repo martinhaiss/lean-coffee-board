@@ -69,3 +69,27 @@ Content-Type: application/json
 {
     "text": "This is a post request"
 }
+
+### DELETE
+DELETE  http://localhost:3000/api/cards/
+Content-Type: application/json
+
+{
+    "text": "This is a post request"
+}
+
+### PATCH
+PATCH  http://localhost:3000/api/cards/
+Content-Type: application/json
+
+{
+    "text": "This is a post request"
+}
+
+### PUT
+PUT  http://localhost:3000/api/cards/
+Content-Type: application/json
+
+{
+    "text": "This is a post request"
+}
