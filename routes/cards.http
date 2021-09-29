@@ -1,0 +1,43 @@
+### GET 
+GET http://localhost:3000/api/cards/
+
+### GET 
+    
+GET http://localhost:3000/api/cards/123abc
+
+### GET 
+GET http://localhost:3000/api/cards/61545c34b40bb0a5b0cb2eb1
+
+### POST
+POST http://localhost:3000/api/cards/
+Content-Type: application/json
+
+{
+    "text": "Hello, how are you?",
+    "author": "Peter Post"
+}
+
+### DELETE
+DELETE  http://localhost:3000/api/cards/123abc
+Content-Type: application/json
+
+{
+    "text": "Hello, how are you today? This is a DELETE request"
+}
+
+### PATCH
+PATCH  http://localhost:3000/api/cards/615474fd1e036564c73f4458
+Content-Type: application/json
+
+{
+    "text": "This is a PATCH request"
+}
+
+### PUT
+PUT  http://localhost:3000/api/cards/D8lPoCTvyARW5nOxoLUL1
+Content-Type: application/json
+
+{
+    "text": "Hello, how are you today? This is a PUT request",
+    "author": "Put Putter"
+}
