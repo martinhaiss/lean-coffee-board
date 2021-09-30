@@ -6,7 +6,7 @@ GET http://localhost:3000/api/cards/
 GET http://localhost:3000/api/cards/123abc
 
 ### GET 
-GET http://localhost:3000/api/cards/61545c34b40bb0a5b0cb2eb1
+GET http://localhost:3000/api/cards/61545c34b40b
 
 ### POST
 POST http://localhost:3000/api/cards/
@@ -18,7 +18,7 @@ Content-Type: application/json
 }
 
 ### DELETE
-DELETE  http://localhost:3000/api/cards/123abc
+DELETE  http://localhost:3000/api/cards/615478d815db
 Content-Type: application/json
 
 {

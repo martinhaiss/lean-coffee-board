@@ -1,37 +1,33 @@
 const express = require('express')
 const Card = require('../models/Card')
-const { nanoid } = require('nanoid')
 const { request } = require('express')
 const router = express.Router()
 
-let cards = [
-  {
-    text: 'What is the meaning of Life?',
-    author: 'Jane Doe',
-    id: '123abc',
-  },
-  {
-    text: 'What is a server?',
-    author: 'Peter Post',
-    id: '456def',
-  },
-]
-
 // -------------- get -------------------
 
-router.get('/', (request, response) => {
+router.get('/', (request, response, next) => {
   Card.find()
     .then(data => response.status(200).json(data))
-    .catch(error => response.status(404).json(error))
+    .catch(error =>
+      next({ status: 404, messsage: error.message || 'Document not found' })
+    )
 })
 
-// -------------- get by id -------------------
+// -------------- get by id -----------------
 
-router.get('/:id', (request, response) => {
+router.get('/:id', (request, response, next) => {
   const { id } = request.params
   Card.findById(id)
-    .then(data => response.status(200).json(data))
-    .catch(error => response.status(404).json(error))
+    .then(data => {
+      if (!data) {
+        throw new Error('This is my error!')
+      }
+      response.status(200).json(data)
+    })
+
+    .catch(error =>
+      next({ status: 404, messsage: error.message || 'Document not found' })
+    )
 })
 
 // -------------- post -------------------
@@ -48,8 +44,6 @@ router.post('/', (request, response) => {
   Card.create(newCard)
     .then(newCard => response.status(201).json(newCard))
     .catch(error => response.status(404).json(error))
-
-  //  response.status(200).json(newCard)
 })
 
 // -------------- patch -------------------
@@ -68,13 +62,22 @@ router.patch('/:id', (request, response) => {
     .catch(error => response.status(400).json(error))
 })
 
-// -------------- delete -------------------
-router.delete('/:id', (request, response) => {
+// -------------- delete -----------------
+
+router.delete('/:id', (request, response, next) => {
   const { id } = request.params
 
   Card.findByIdAndDelete(id)
-    .then(card => response.status(200).json(card))
-    .catch(error => response.status(404).json(error))
+    .then(data => {
+      if (!data) {
+        throw new Error('This card does not exist!')
+      }
+      response.status(200).json(data)
+    })
+
+    .catch(error =>
+      next({ status: 404, messsage: error.message || 'Document not found' })
+    )
 })
 
 module.exports = router
